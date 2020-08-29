@@ -7,4 +7,6 @@ abstract class SplashPageState extends Equatable {
 
 class SplashPageInited extends SplashPageState {}
 
-class SplashPageLoaded extends SplashPageState {}
+class SignedIn extends SplashPageState {}
+
+class UnSignedIn extends SplashPageState {}
