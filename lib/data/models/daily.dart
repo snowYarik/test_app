@@ -52,4 +52,8 @@ class Daily {
   final double rain;
   @JsonKey()
   final double uvi;
+
+  factory Daily.fromJson(Map<String, dynamic> json) =>
+      _$DailyFromJson(json);
+  Map<String, dynamic> toJson() => _$DailyToJson(this);
 }

@@ -10,8 +10,7 @@ class UserModelJsonMapper {
     );
   }
 
-  Map<String, dynamic> transformUserModeltoJson(
-      {@required User userModel}) {
+  Map<String, dynamic> transformUserModeltoJson({@required User userModel}) {
     return <String, dynamic>{
       'id': userModel.id,
     };

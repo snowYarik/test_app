@@ -31,4 +31,8 @@ class Forecast {
   final List<Hourly> hourly;
   @JsonKey()
   final List<Daily> daily;
+
+  factory Forecast.fromJson(Map<String, dynamic> json) =>
+      _$ForecastFromJson(json);
+  Map<String, dynamic> toJson() => _$ForecastToJson(this);
 }

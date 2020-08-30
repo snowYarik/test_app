@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 import 'package:test_app/data/data_sources/auth_data_sources/remote/i_auth_remote_data_source.dart';
-import 'package:test_app/data/mappers/user_model_data_mapper.dart';
+import 'package:test_app/data/mappers/user_mappers/user_model_data_mapper.dart';
 import 'package:test_app/domain/entities/user_entity.dart';
 import 'package:test_app/domain/repositories/i_auth_repository.dart';
 

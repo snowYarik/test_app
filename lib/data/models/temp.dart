@@ -12,6 +12,8 @@ class Temp {
     this.morn,
   });
 
+  factory Temp.fromJson(Map<String, dynamic> json) => _$TempFromJson(json);
+
   @JsonKey()
   final double day;
   @JsonKey()
@@ -24,4 +26,6 @@ class Temp {
   final double eve;
   @JsonKey()
   final double morn;
+
+  Map<String, dynamic> toJson() => _$TempToJson(this);
 }

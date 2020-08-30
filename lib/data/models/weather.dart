@@ -10,6 +10,9 @@ class Weather {
     this.icon,
   });
 
+  factory Weather.fromJson(Map<String, dynamic> json) =>
+      _$WeatherFromJson(json);
+
   @JsonKey()
   final int id;
   @JsonKey()
@@ -18,4 +21,6 @@ class Weather {
   final String description;
   @JsonKey()
   final String icon;
+
+  Map<String, dynamic> toJson() => _$WeatherToJson(this);
 }

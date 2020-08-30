@@ -46,4 +46,7 @@ class Hourly {
   final double pop;
   @JsonKey()
   final Rain rain;
+
+  factory Hourly.fromJson(Map<String, dynamic> json) => _$HourlyFromJson(json);
+  Map<String, dynamic> toJson() => _$HourlyToJson(this);
 }

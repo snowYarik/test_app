@@ -7,6 +7,10 @@ class Rain {
     this.d1h,
   });
 
+  factory Rain.fromJson(Map<String, dynamic> json) => _$RainFromJson(json);
+
   @JsonKey()
   final double d1h;
+
+  Map<String, dynamic> toJson() => _$RainToJson(this);
 }

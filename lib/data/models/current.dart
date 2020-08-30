@@ -49,4 +49,8 @@ class Current {
   final int windDeg;
   @JsonKey()
   final List<Weather> weather;
+
+  factory Current.fromJson(Map<String, dynamic> json) =>
+      _$CurrentFromJson(json);
+  Map<String, dynamic> toJson() => _$CurrentToJson(this);
 }

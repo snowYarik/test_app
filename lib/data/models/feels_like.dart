@@ -17,4 +17,8 @@ class FeelsLike {
   final double eve;
   @JsonKey()
   final double morn;
+
+  factory FeelsLike.fromJson(Map<String, dynamic> json) =>
+      _$FeelsLikeFromJson(json);
+  Map<String, dynamic> toJson() => _$FeelsLikeToJson(this);
 }
