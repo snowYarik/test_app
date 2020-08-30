@@ -3,12 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:test_app/data/data_sources/auth_data_sources/i_auth_remote_data_source.dart';
+import 'package:test_app/data/data_sources/auth_data_sources/remote/i_auth_remote_data_source.dart';
 import 'package:test_app/data/mappers/user_model_data_mapper.dart';
-import 'package:test_app/data/models/user_model.dart';
+import 'package:test_app/data/models/user.dart' as user_model;
 
 @Injectable(as: IAuthRemoteDataSource)
-@injectable
 class AuthRemoteDataSource extends IAuthRemoteDataSource {
   AuthRemoteDataSource()
       : _firebaseAuth = FirebaseAuth.instance,
@@ -21,7 +20,7 @@ class AuthRemoteDataSource extends IAuthRemoteDataSource {
   Future<bool> get isSignedIn async => _firebaseAuth.currentUser != null;
 
   @override
-  Future<UserModel> signInWithGoogle() async {
+  Future<user_model.User> signInWithGoogle() async {
     final googleAccount = await GoogleSignIn().signIn();
     final googleAuth = await googleAccount.authentication;
     final credential = GoogleAuthProvider.credential(
@@ -37,7 +36,7 @@ class AuthRemoteDataSource extends IAuthRemoteDataSource {
   }
 
   @override
-  Future<UserModel> signInWithFacebook() async {
+  Future<user_model.User> signInWithFacebook() async {
     final facebookLogin = FacebookLogin();
     final result = await facebookLogin.logIn(['email']);
     switch (result.status) {
@@ -58,7 +57,11 @@ class AuthRemoteDataSource extends IAuthRemoteDataSource {
   Future<User> _authFirebaseWithFacebook(
       {@required FacebookAccessToken token}) async {
     final credential = FacebookAuthProvider.credential(token.token);
-    final firebaseUser = await _firebaseAuth.signInWithCredential(credential);
+    final firebaseUser = await _firebaseAuth
+        .signInWithCredential(credential)
+        .catchError((error) {
+      throw error;
+    });
     return firebaseUser.user;
   }
 
