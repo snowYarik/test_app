@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:test_app/data/models/hourly_weather_model.dart';
-import 'package:test_app/domain/entities/temperature_entity.dart';
 import 'package:test_app/domain/entities/weather_entity.dart';
 import 'package:test_app/domain/entities/weather_options_entity.dart';
 
@@ -24,7 +23,8 @@ class HourlyWeatherEntity extends Equatable {
       weatherOptions: WeatherOptionsEntity(
           atmosphericTemperature: hourlyWeatherModel.dewPoint,
           cloudinessInPercent: hourlyWeatherModel.clouds,
-          dateTime: DateTime.fromMillisecondsSinceEpoch(hourlyWeatherModel.dt),
+          dateTime:
+              DateTime.fromMillisecondsSinceEpoch(hourlyWeatherModel.dt * 1000),
           humidity: hourlyWeatherModel.humidity,
           pressure: hourlyWeatherModel.pressure,
           weather: WeatherEntity.fromWeatherModel(

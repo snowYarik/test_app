@@ -11,8 +11,8 @@ class GetForecast extends IUseCase<void, Params> {
   final IWeatherRepository _weatherRepository;
 
   @override
-  Future<void> execute({Params params}) {
-    return _weatherRepository.getForecast(
+  Future<void> execute({@required Params params}) {
+    return _weatherRepository.getForecastAndCache(
         latitude: params.latitude,
         longitude: params.longitude,
         exclude: params.exclude);

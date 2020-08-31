@@ -6,5 +6,5 @@ export 'hourly_weather_model.dart';
 export 'minutely_weather_model.dart';
 export 'rain_model.dart';
 export 'temperature_model.dart';
-export 'user.dart';
+export 'user_model.dart';
 export 'weather_model.dart';

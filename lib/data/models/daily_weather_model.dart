@@ -1,10 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:test_app/data/models/models.dart';
-part 'daily.g.dart';
+import 'package:hive/hive.dart';
+part 'daily_weather_model.g.dart';
 
 @JsonSerializable()
-class DailyWeatherModel {
-  const DailyWeatherModel({
+@HiveType(typeId: 2)
+class DailyWeatherModel extends HiveObject {
+  DailyWeatherModel({
     this.dt,
     this.sunrise,
     this.sunset,
@@ -23,7 +25,7 @@ class DailyWeatherModel {
   });
 
   factory DailyWeatherModel.fromJson(Map<String, dynamic> json) =>
-      _$DailyFromJson(json);
+      _$DailyWeatherModelFromJson(json);
 
   @JsonKey()
   final int dt;
@@ -33,17 +35,17 @@ class DailyWeatherModel {
   final int sunset;
   @JsonKey()
   final TemperatureModel temp;
-  @JsonKey()
+  @JsonKey(name: 'feels_like')
   final FeelsLikeTemperatureModel feelsLike;
   @JsonKey()
   final int pressure;
   @JsonKey()
   final int humidity;
-  @JsonKey()
+  @JsonKey(name: 'dew_point')
   final double dewPoint;
-  @JsonKey()
+  @JsonKey(name: 'wind_speed')
   final double windSpeed;
-  @JsonKey()
+  @JsonKey(name: 'wind_deg')
   final int windDeg;
   @JsonKey()
   final List<WeatherModel> weather;
@@ -56,5 +58,5 @@ class DailyWeatherModel {
   @JsonKey()
   final double uvi;
 
-  Map<String, dynamic> toJson() => _$DailyToJson(this);
+  Map<String, dynamic> toJson() => _$DailyWeatherModelToJson(this);
 }

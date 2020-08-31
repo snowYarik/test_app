@@ -1,10 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:test_app/data/models/models.dart';
-part 'hourly.g.dart';
+import 'package:hive/hive.dart';
+part 'hourly_weather_model.g.dart';
 
 @JsonSerializable()
-class HourlyWeatherModel {
-  const HourlyWeatherModel({
+@HiveType(typeId: 5)
+class HourlyWeatherModel extends HiveObject {
+  HourlyWeatherModel({
     this.dt,
     this.temp,
     this.feelsLike,
@@ -21,27 +23,27 @@ class HourlyWeatherModel {
   });
 
   factory HourlyWeatherModel.fromJson(Map<String, dynamic> json) =>
-      _$HourlyFromJson(json);
+      _$HourlyWeatherModelFromJson(json);
 
   @JsonKey()
   final int dt;
   @JsonKey()
   final double temp;
-  @JsonKey()
+  @JsonKey(name: 'feels_like')
   final double feelsLike;
   @JsonKey()
   final int pressure;
   @JsonKey()
   final int humidity;
-  @JsonKey()
+  @JsonKey(name: 'dew_point')
   final double dewPoint;
   @JsonKey()
   final int clouds;
   @JsonKey()
   final int visibility;
-  @JsonKey()
+  @JsonKey(name: 'wind_speed')
   final double windSpeed;
-  @JsonKey()
+  @JsonKey(name: 'wind_deg')
   final int windDeg;
   @JsonKey()
   final List<WeatherModel> weather;
@@ -50,5 +52,5 @@ class HourlyWeatherModel {
   @JsonKey()
   final RainModel rain;
 
-  Map<String, dynamic> toJson() => _$HourlyToJson(this);
+  Map<String, dynamic> toJson() => _$HourlyWeatherModelToJson(this);
 }

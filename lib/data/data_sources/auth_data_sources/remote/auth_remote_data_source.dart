@@ -5,7 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:test_app/data/data_sources/auth_data_sources/remote/i_auth_remote_data_source.dart';
 import 'package:test_app/data/mappers/user_mappers/user_model_data_mapper.dart';
-import 'package:test_app/data/models/user.dart' as user_model;
+import 'package:test_app/data/models/user_model.dart' as user_model;
 
 @Injectable(as: IAuthRemoteDataSource)
 class AuthRemoteDataSource extends IAuthRemoteDataSource {

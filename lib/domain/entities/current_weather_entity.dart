@@ -16,10 +16,12 @@ class CurrentWeatherEntity extends Equatable {
   factory CurrentWeatherEntity.fromCurrentWeatherModel(
       {@required CurrentWeatherModel currentWeatherModel}) {
     return CurrentWeatherEntity(
-      sunriseDateTime:
-          DateTime.fromMillisecondsSinceEpoch(currentWeatherModel.sunrise),
-      sunsetDateTime:
-          DateTime.fromMillisecondsSinceEpoch(currentWeatherModel.sunset),
+      sunriseDateTime: DateTime.fromMillisecondsSinceEpoch(
+          currentWeatherModel.sunrise * 1000,
+          isUtc: true),
+      sunsetDateTime: DateTime.fromMillisecondsSinceEpoch(
+          currentWeatherModel.sunset * 1000,
+          isUtc: true),
       temperature: currentWeatherModel.temp,
       feelsLikeTemperature: currentWeatherModel.feelsLike,
       averageVisibilityInMetres: currentWeatherModel.visibility,

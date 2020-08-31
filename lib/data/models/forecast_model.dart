@@ -1,10 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:test_app/data/models/models.dart';
-part 'forecast.g.dart';
+import 'package:hive/hive.dart';
+
+part 'forecast_model.g.dart';
 
 @JsonSerializable()
-class ForecastModel {
-  const ForecastModel({
+@HiveType(typeId: 4)
+class ForecastModel extends HiveObject {
+  ForecastModel({
     this.lat,
     this.lon,
     this.timezone,
@@ -16,7 +19,7 @@ class ForecastModel {
   });
 
   factory ForecastModel.fromJson(Map<String, dynamic> json) =>
-      _$ForecastFromJson(json);
+      _$ForecastModelFromJson(json);
 
   @JsonKey()
   final double lat;
@@ -24,7 +27,7 @@ class ForecastModel {
   final double lon;
   @JsonKey()
   final String timezone;
-  @JsonKey()
+  @JsonKey(name: 'timezone_offset')
   final int timezoneOffset;
   @JsonKey()
   final CurrentWeatherModel current;
@@ -35,5 +38,5 @@ class ForecastModel {
   @JsonKey()
   final List<DailyWeatherModel> daily;
 
-  Map<String, dynamic> toJson() => _$ForecastToJson(this);
+  Map<String, dynamic> toJson() => _$ForecastModelToJson(this);
 }

@@ -25,6 +25,9 @@ class WeatherRemoteDataSource extends IWeatherRemoteDataSource {
   Future<ForecastModel> getForecast(
       {@required double latitude, @required double longitude, String exclude}) {
     return _restClient.getForecast(
-        latitude: latitude, longutude: longitude, apiKey: _apiKey);
+        latitude: latitude,
+        longutude: longitude,
+        apiKey: _apiKey,
+        exclude: exclude);
   }
 }

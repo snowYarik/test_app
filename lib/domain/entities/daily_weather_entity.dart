@@ -23,10 +23,12 @@ class DailyWeatherEntity extends Equatable {
           TemperatureEntity.fromFeelsLikeTemperatureModel(
               temperatureModel: dailyWeatherModel.feelsLike),
       precipitationProbabilityInPercent: dailyWeatherModel.pop,
-      sunriseDateTime:
-          DateTime.fromMillisecondsSinceEpoch(dailyWeatherModel.sunrise),
-      sunsetDateTime:
-          DateTime.fromMillisecondsSinceEpoch(dailyWeatherModel.sunset),
+      sunriseDateTime: DateTime.fromMillisecondsSinceEpoch(
+          dailyWeatherModel.sunrise * 1000,
+          isUtc: true),
+      sunsetDateTime: DateTime.fromMillisecondsSinceEpoch(
+          dailyWeatherModel.sunset * 1000,
+          isUtc: true),
       temperature: TemperatureEntity.fromTemperatureModel(
           temperatureModel: dailyWeatherModel.temp),
       weather: WeatherEntity.fromWeatherModel(
@@ -34,7 +36,9 @@ class DailyWeatherEntity extends Equatable {
       weatherOptions: WeatherOptionsEntity(
           atmosphericTemperature: 0.0,
           cloudinessInPercent: dailyWeatherModel.clouds,
-          dateTime: DateTime.fromMillisecondsSinceEpoch(dailyWeatherModel.dt),
+          dateTime: DateTime.fromMillisecondsSinceEpoch(
+              dailyWeatherModel.dt * 1000,
+              isUtc: true),
           humidity: dailyWeatherModel.humidity,
           pressure: dailyWeatherModel.pressure,
           weather: WeatherEntity.fromWeatherModel(

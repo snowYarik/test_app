@@ -4,7 +4,7 @@ import 'package:test_app/data/models/models.dart';
 import 'package:dio/dio.dart';
 part 'i_weather_rest_client.g.dart';
 
-@RestApi(baseUrl: 'api.openweathermap.org/data/2.5/')
+@RestApi(baseUrl: 'https://api.openweathermap.org/data/2.5/')
 abstract class IWeatherRestClient {
   factory IWeatherRestClient(
     Dio dio, {
@@ -16,5 +16,6 @@ abstract class IWeatherRestClient {
       {@Query('lat') @required double latitude,
       @Query('lon') @required double longutude,
       @Query('exclude') String exclude,
+      @Query('units') String units = 'metric',
       @Query('appid') @required String apiKey});
 }

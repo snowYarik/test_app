@@ -1,17 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'feels_like.g.dart';
+import 'package:hive/hive.dart';
+part 'feels_like_temperature_model.g.dart';
 
 @JsonSerializable()
-class FeelsLikeTemperatureModel {
-  const FeelsLikeTemperatureModel({
+@HiveType(typeId: 3)
+class FeelsLikeTemperatureModel extends HiveObject {
+  FeelsLikeTemperatureModel({
     this.day,
     this.night,
     this.eve,
     this.morn,
   });
-  
+
   factory FeelsLikeTemperatureModel.fromJson(Map<String, dynamic> json) =>
-      _$FeelsLikeFromJson(json);
+      _$FeelsLikeTemperatureModelFromJson(json);
 
   @JsonKey()
   final double day;
@@ -22,5 +24,5 @@ class FeelsLikeTemperatureModel {
   @JsonKey()
   final double morn;
 
-  Map<String, dynamic> toJson() => _$FeelsLikeToJson(this);
+  Map<String, dynamic> toJson() => _$FeelsLikeTemperatureModelToJson(this);
 }

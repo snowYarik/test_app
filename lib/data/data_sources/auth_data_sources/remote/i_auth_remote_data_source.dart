@@ -1,4 +1,4 @@
-import 'package:test_app/data/models/user.dart';
+import 'package:test_app/data/models/user_model.dart';
 
 abstract class IAuthRemoteDataSource {
   Future<UserModel> signInWithGoogle();
