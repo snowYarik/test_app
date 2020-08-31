@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-class User extends Equatable {
-  const User({
+class UserEntity extends Equatable {
+  const UserEntity({
     @required this.id,
   });
 

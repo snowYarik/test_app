@@ -1,32 +1,30 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:test_app/data/models/models.dart';
-part 'current.g.dart';
+part 'hourly.g.dart';
 
 @JsonSerializable()
-class Current {
-  const Current({
+class HourlyWeatherModel {
+  const HourlyWeatherModel({
     this.dt,
-    this.sunrise,
-    this.sunset,
     this.temp,
     this.feelsLike,
     this.pressure,
     this.humidity,
     this.dewPoint,
-    this.uvi,
     this.clouds,
     this.visibility,
     this.windSpeed,
     this.windDeg,
     this.weather,
+    this.pop,
+    this.rain,
   });
+
+  factory HourlyWeatherModel.fromJson(Map<String, dynamic> json) =>
+      _$HourlyFromJson(json);
 
   @JsonKey()
   final int dt;
-  @JsonKey()
-  final int sunrise;
-  @JsonKey()
-  final int sunset;
   @JsonKey()
   final double temp;
   @JsonKey()
@@ -38,8 +36,6 @@ class Current {
   @JsonKey()
   final double dewPoint;
   @JsonKey()
-  final double uvi;
-  @JsonKey()
   final int clouds;
   @JsonKey()
   final int visibility;
@@ -48,9 +44,11 @@ class Current {
   @JsonKey()
   final int windDeg;
   @JsonKey()
-  final List<Weather> weather;
+  final List<WeatherModel> weather;
+  @JsonKey()
+  final double pop;
+  @JsonKey()
+  final RainModel rain;
 
-  factory Current.fromJson(Map<String, dynamic> json) =>
-      _$CurrentFromJson(json);
-  Map<String, dynamic> toJson() => _$CurrentToJson(this);
+  Map<String, dynamic> toJson() => _$HourlyToJson(this);
 }

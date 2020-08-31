@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_app/domain/entities/daily_weather.dart';
+import 'package:test_app/domain/entities/daily_weather_entity.dart';
 import 'package:test_app/presentation/widgets/day_of_mounth_widget.dart';
 
 class DayWeatherItemWidget extends StatelessWidget {
   const DayWeatherItemWidget({
     Key key,
-    DailyWeather dailyWeather,
+    DailyWeatherEntity dailyWeather,
   })  : _dailyWeather = dailyWeather,
         super(key: key);
 
-  final DailyWeather _dailyWeather;
+  final DailyWeatherEntity _dailyWeather;
 
   @override
   Widget build(BuildContext context) {

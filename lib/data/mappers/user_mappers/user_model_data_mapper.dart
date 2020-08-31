@@ -6,23 +6,23 @@ import 'package:test_app/domain/entities/user_entity.dart' as user_entity;
 
 @injectable
 class UserModelDataMapper {
-  user_entity.User transformUserModelToUserEntity(
-      {@required user_model.User userModel}) {
-    return user_entity.User(
+  user_entity.UserEntity transformUserModelToUserEntity(
+      {@required user_model.UserModel userModel}) {
+    return user_entity.UserEntity(
       id: userModel.id,
     );
   }
 
-  user_model.User transformUserEntityToUserModel(
-      {@required user_entity.User userEntity}) {
-    return user_model.User(
+  user_model.UserModel transformUserEntityToUserModel(
+      {@required user_entity.UserEntity userEntity}) {
+    return user_model.UserModel(
       id: userEntity.id,
     );
   }
 
-  user_model.User transformFirebaseUserToUserModel(
+  user_model.UserModel transformFirebaseUserToUserModel(
       {@required auth.User firebaseUser}) {
-    return user_model.User(
+    return user_model.UserModel(
       id: firebaseUser.uid,
     );
   }

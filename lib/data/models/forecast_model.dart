@@ -3,8 +3,8 @@ import 'package:test_app/data/models/models.dart';
 part 'forecast.g.dart';
 
 @JsonSerializable()
-class Forecast {
-  const Forecast({
+class ForecastModel {
+  const ForecastModel({
     this.lat,
     this.lon,
     this.timezone,
@@ -15,6 +15,9 @@ class Forecast {
     this.daily,
   });
 
+  factory ForecastModel.fromJson(Map<String, dynamic> json) =>
+      _$ForecastFromJson(json);
+
   @JsonKey()
   final double lat;
   @JsonKey()
@@ -24,15 +27,13 @@ class Forecast {
   @JsonKey()
   final int timezoneOffset;
   @JsonKey()
-  final Current current;
+  final CurrentWeatherModel current;
   @JsonKey()
-  final List<Minutely> minutely;
+  final List<MinutelyWeatherModel> minutely;
   @JsonKey()
-  final List<Hourly> hourly;
+  final List<HourlyWeatherModel> hourly;
   @JsonKey()
-  final List<Daily> daily;
+  final List<DailyWeatherModel> daily;
 
-  factory Forecast.fromJson(Map<String, dynamic> json) =>
-      _$ForecastFromJson(json);
   Map<String, dynamic> toJson() => _$ForecastToJson(this);
 }

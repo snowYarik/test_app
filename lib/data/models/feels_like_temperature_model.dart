@@ -1,25 +1,20 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'temp.g.dart';
+part 'feels_like.g.dart';
 
 @JsonSerializable()
-class Temp {
-  const Temp({
+class FeelsLikeTemperatureModel {
+  const FeelsLikeTemperatureModel({
     this.day,
-    this.min,
-    this.max,
     this.night,
     this.eve,
     this.morn,
   });
-
-  factory Temp.fromJson(Map<String, dynamic> json) => _$TempFromJson(json);
+  
+  factory FeelsLikeTemperatureModel.fromJson(Map<String, dynamic> json) =>
+      _$FeelsLikeFromJson(json);
 
   @JsonKey()
   final double day;
-  @JsonKey()
-  final double min;
-  @JsonKey()
-  final double max;
   @JsonKey()
   final double night;
   @JsonKey()
@@ -27,5 +22,5 @@ class Temp {
   @JsonKey()
   final double morn;
 
-  Map<String, dynamic> toJson() => _$TempToJson(this);
+  Map<String, dynamic> toJson() => _$FeelsLikeToJson(this);
 }

@@ -3,7 +3,7 @@ import 'package:test_app/domain/entities/user_entity.dart';
 import 'package:test_app/domain/repositories/i_auth_repository.dart';
 import 'package:test_app/domain/use_cases/i_use_case.dart';
 
-class SignInWithFacebook extends IUseCase<User, NoParams> {
+class SignInWithFacebook extends IUseCase<UserEntity, NoParams> {
   const SignInWithFacebook({
     @required IAuthRepository authRespository,
   }) : _authRepository = authRespository;
@@ -11,7 +11,7 @@ class SignInWithFacebook extends IUseCase<User, NoParams> {
   final IAuthRepository _authRepository;
 
   @override
-  Future<User> execute({NoParams params}) {
+  Future<UserEntity> execute({NoParams params}) {
     return _authRepository.signInWithFacebook();
   }
 }

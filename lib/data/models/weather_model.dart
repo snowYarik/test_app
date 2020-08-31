@@ -2,15 +2,15 @@ import 'package:json_annotation/json_annotation.dart';
 part 'weather.g.dart';
 
 @JsonSerializable()
-class Weather {
-  const Weather({
+class WeatherModel {
+  const WeatherModel({
     this.id,
     this.main,
     this.description,
     this.icon,
   });
 
-  factory Weather.fromJson(Map<String, dynamic> json) =>
+  factory WeatherModel.fromJson(Map<String, dynamic> json) =>
       _$WeatherFromJson(json);
 
   @JsonKey()

@@ -20,7 +20,7 @@ class AuthRepository extends IAuthRepository {
   Future<bool> get isSignedIn => _authRemoteDataSource.isSignedIn;
 
   @override
-  Future<User> signInWithGoogle() async {
+  Future<UserEntity> signInWithGoogle() async {
     final userModel =
         await _authRemoteDataSource.signInWithGoogle().catchError((error) {
       throw error;
@@ -30,7 +30,7 @@ class AuthRepository extends IAuthRepository {
   }
 
   @override
-  Future<User> signInWithFacebook() async {
+  Future<UserEntity> signInWithFacebook() async {
     final userModel =
         await _authRemoteDataSource.signInWithFacebook().catchError((error) {
       throw error;

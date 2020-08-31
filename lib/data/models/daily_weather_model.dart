@@ -3,8 +3,8 @@ import 'package:test_app/data/models/models.dart';
 part 'daily.g.dart';
 
 @JsonSerializable()
-class Daily {
-  const Daily({
+class DailyWeatherModel {
+  const DailyWeatherModel({
     this.dt,
     this.sunrise,
     this.sunset,
@@ -22,6 +22,9 @@ class Daily {
     this.uvi,
   });
 
+  factory DailyWeatherModel.fromJson(Map<String, dynamic> json) =>
+      _$DailyFromJson(json);
+
   @JsonKey()
   final int dt;
   @JsonKey()
@@ -29,9 +32,9 @@ class Daily {
   @JsonKey()
   final int sunset;
   @JsonKey()
-  final Temp temp;
+  final TemperatureModel temp;
   @JsonKey()
-  final FeelsLike feelsLike;
+  final FeelsLikeTemperatureModel feelsLike;
   @JsonKey()
   final int pressure;
   @JsonKey()
@@ -43,7 +46,7 @@ class Daily {
   @JsonKey()
   final int windDeg;
   @JsonKey()
-  final List<Weather> weather;
+  final List<WeatherModel> weather;
   @JsonKey()
   final int clouds;
   @JsonKey()
@@ -53,7 +56,5 @@ class Daily {
   @JsonKey()
   final double uvi;
 
-  factory Daily.fromJson(Map<String, dynamic> json) =>
-      _$DailyFromJson(json);
   Map<String, dynamic> toJson() => _$DailyToJson(this);
 }

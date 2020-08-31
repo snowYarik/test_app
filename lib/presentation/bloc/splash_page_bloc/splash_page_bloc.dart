@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_app/data/models/models.dart';
+import 'package:test_app/domain/use_cases/weather_use_cases/get_forecast.dart';
 import 'package:test_app/presentation/bloc/splash_page_bloc/bloc.dart';
 import 'package:test_app/presentation/push_notification/push_notification_mixin.dart';
 
@@ -11,6 +11,7 @@ class SplashPageBloc extends Bloc<SplashPageEvent, SplashPageState>
   Stream<SplashPageState> mapEventToState(SplashPageEvent event) async* {
     if (event is StartLoading) {
       initPushNotifications();
+      final t = GetForecast(weatherRepository: null);
       await Future.delayed(const Duration(seconds: 2));
       yield SignedIn();
     }

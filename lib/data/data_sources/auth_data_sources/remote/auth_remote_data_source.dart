@@ -20,7 +20,7 @@ class AuthRemoteDataSource extends IAuthRemoteDataSource {
   Future<bool> get isSignedIn async => _firebaseAuth.currentUser != null;
 
   @override
-  Future<user_model.User> signInWithGoogle() async {
+  Future<user_model.UserModel> signInWithGoogle() async {
     final googleAccount = await GoogleSignIn().signIn();
     final googleAuth = await googleAccount.authentication;
     final credential = GoogleAuthProvider.credential(
@@ -36,7 +36,7 @@ class AuthRemoteDataSource extends IAuthRemoteDataSource {
   }
 
   @override
-  Future<user_model.User> signInWithFacebook() async {
+  Future<user_model.UserModel> signInWithFacebook() async {
     final facebookLogin = FacebookLogin();
     final result = await facebookLogin.logIn(['email']);
     switch (result.status) {

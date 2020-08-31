@@ -1,12 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:test_app/domain/entities/temperature.dart';
-import 'package:test_app/domain/entities/weather.dart';
+import 'package:test_app/domain/entities/weather_entity.dart';
 
-class WeatherOptions extends Equatable {
-  const WeatherOptions({
+class WeatherOptionsEntity extends Equatable {
+  const WeatherOptionsEntity({
     @required this.dateTime,
-    @required this.feelsLikeTemperature,
     @required this.pressure,
     @required this.humidity,
     @required this.atmosphericTemperature,
@@ -17,19 +15,17 @@ class WeatherOptions extends Equatable {
   });
 
   final DateTime dateTime;
-  final Temperature feelsLikeTemperature;
   final int pressure;
   final int humidity;
   final double atmosphericTemperature;
   final int cloudinessInPercent;
   final double windSpeed;
   final int windDirectionInDegrees;
-  final Weather weather;
+  final WeatherEntity weather;
 
   @override
   List<Object> get props => [
         dateTime,
-        feelsLikeTemperature,
         pressure,
         humidity,
         atmosphericTemperature,

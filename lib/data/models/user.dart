@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-class User extends Equatable {
-  const User({
+class UserModel extends Equatable {
+  const UserModel({
     @required this.id,
   });
 

@@ -12,9 +12,9 @@ abstract class IWeatherRestClient {
   }) = _IWeatherRestClient;
 
   @GET('onecall')
-  Future<Forecast> getForecast(
+  Future<ForecastModel> getForecast(
       {@Query('lat') @required double latitude,
       @Query('lon') @required double longutude,
       @Query('exclude') String exclude,
-      @Query('appid') String apiKey});
+      @Query('appid') @required String apiKey});
 }
